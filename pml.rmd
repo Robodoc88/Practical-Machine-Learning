@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 ##Peer Assessment: Prediction of Dumbbell Lifting with Data from Acceleratometers
 **Date:** August 21, 2014      
 **Author:** Michael W. Lee
@@ -52,17 +55,18 @@ model1 <- train(classe ~., data=training, method="gbm", verbose = FALSE)
 ###Results
 The relative influence of the variables are listed below.  `roll_belt`, `pitch_forearm`, `yaw_belt`, `magnet_dumbbell_z`, `magnet_dumbbell_y`, and `roll_forearm` have the most influence in the prediction model.
 
-```{r model1, echo=TRUE, cache=FALSE}
+```{r model1, echo=TRUE, cache=TRUE}
 summary(model1)
 ```
 
-In-sample accuracy is 98% with sensitivity of the prediction > 95% and specificity > 99%.
+In-sample accuracy is 98% with sensitivity of the prediction > 95% and specificity > 99%. Out of sample accuracy is expected to be lower than 98%.
 ```{r in_sample, echo=TRUE, cache=TRUE}
 inPred <- predict(model1)
 confusionMatrix(training$classe, inPred)
 ```
 
-After cross validation, out of sample accuracy is 96% with sensitivity of the prediction > 92% and specificity > 98%.
+After cross validation, out of sample accuracy is 96% with sensitivity of the prediction > 92% and specificity > 98%.  Out of sample accuracy is only slightly lower than in-sample accuracy.
+
 ```{r out_sample, echo=TRUE, cache=TRUE}
 outPred <- predict(model1, newdata=testing)
 confusionMatrix(testing$classe, outPred)

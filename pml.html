@@ -257,7 +257,7 @@ summary(training)</code></pre>
 ## gyros_arm_z                   gyros_arm_z  0.00000
 ## yaw_forearm                   yaw_forearm  0.00000
 ## gyros_forearm_y           gyros_forearm_y  0.00000</code></pre>
-<p>In-sample accuracy is 98% with sensitivity of the prediction &gt; 95% and specificity &gt; 99%.</p>
+<p>In-sample accuracy is 98% with sensitivity of the prediction &gt; 95% and specificity &gt; 99%. Out of sample accuracy is expected to be lower than 98%.</p>
 <pre class="r"><code>inPred &lt;- predict(model1)
 confusionMatrix(training$classe, inPred)</code></pre>
 <pre><code>## Confusion Matrix and Statistics
@@ -291,7 +291,7 @@ confusionMatrix(training$classe, inPred)</code></pre>
 ## Detection Rate          0.282    0.187    0.169    0.160    0.179
 ## Detection Prevalence    0.284    0.194    0.174    0.164    0.184
 ## Balanced Accuracy       0.991    0.978    0.974    0.986    0.994</code></pre>
-<p>After cross validation, out of sample accuracy is 96% with sensitivity of the prediction &gt; 92% and specificity &gt; 98%.</p>
+<p>After cross validation, out of sample accuracy is 96% with sensitivity of the prediction &gt; 92% and specificity &gt; 98%. Out of sample accuracy is only slightly lower than in-sample accuracy.</p>
 <pre class="r"><code>outPred &lt;- predict(model1, newdata=testing)
 confusionMatrix(testing$classe, outPred)</code></pre>
 <pre><code>## Confusion Matrix and Statistics
